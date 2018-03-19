@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+	<div class="col-md-4">
+    <h1>Crear nueva Compañia</h1>
+    <br>
+		<div class="well well-sm">
+			<legend>Compañia:</legend>
+			<%= form_with(model: [Company.new], html: { class: 'form-horizontal' }) do |f| %>
+				<div class="form-group">
+					<div class="col-md-12">
+						<%= f.text_field :name, placeholder: 'Nombre Compañia', class: 'form-control' %>
+					</div>
+				</div>
+				<%= f.submit 'Crear Compañia', class: 'btn btn-primary' %>
+			<% end %>
+		</div>
+	</div>
+  <div class="col-md-8" id="compañias">
+    <h1>Compañias</h1>
+    <br>
+    <% @companies.each do |company| %>
+      <div class="well well-sm" id="<%= company.id %>">
+        <strong>Nombre:</strong>
+        <br>
+        <div id="contenido<%= company.id %>">
+          <%= company.name %>
+				</div>
+        <div class="text-right">
+          <%= link_to 'Detalles', company_path(company), class: 'btn btn-xs btn-primary' %>
+					<%= link_to 'Editar', edit_company_path(company),remote:true , class: 'btn btn-xs btn-success' %>
+					<%= link_to 'Eliminar', company_path(company), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Compañia?',remote: true }, class: 'btn btn-xs btn-danger' %>
+				</div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Compañia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="company_edit">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

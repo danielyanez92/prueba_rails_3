@@ -1,0 +1,8 @@
+<div class="well well-sm" id="<%= @company.id %>">
+  <strong><%= @company.name %>:</strong>
+  <br>
+  <div class="text-right">
+    <%= link_to 'Editar', edit_company_path(@company), remote:true , class: 'btn btn-xs btn-success' %>
+    <%= link_to 'Eliminar', company_path(@company), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Compañia?',remote: true }, class: 'btn btn-xs btn-danger' %>
+  </div>
+</div>
