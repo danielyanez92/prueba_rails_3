@@ -1,13 +1,13 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: :show
   # GET /companies
   # GET /companies.json
   def index
     @companies = Company.all
   end
   def show
-
+    @complains = Complain.order("created_at DESC")
   end
 
   # GET /companies/1/edit

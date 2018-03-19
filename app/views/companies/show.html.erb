@@ -1,0 +1,32 @@
+<div class="text-center">
+	<p id="notice"><%= notice %></p>
+
+	<legend><h1><%= @company.name %></h1></legend>
+
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="well well-sm">
+			<legend>Reclamo:</legend>
+			<%= form_with(model: [@company, Complain.new], html: { class: 'form-horizontal' }) do |f| %>
+				<div class="form-group">
+					<div class="col-md-12">
+						<%= f.text_area :content, placeholder: 'Escribe tu Reclamo aquí...', class: 'form-control' %>
+					</div>
+				</div>
+				<%= f.submit 'Agregar Reclamo', class: 'btn btn-primary' %>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-8" id="complains">
+		<% @complains.each do |complain| %>
+			<div class="well well-sm" id="<%= complain.id %>">
+				<strong><%= complain.user.email %>:</strong>
+				<br>
+				<div id="contenido<%= complain.id %>">
+					<%= complain.content %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
