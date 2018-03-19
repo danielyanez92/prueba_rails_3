@@ -21,4 +21,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+link a heroku
+
+* https://still-woodland-57699.herokuapp.com/
